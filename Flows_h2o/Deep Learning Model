@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles [ \"C:\\\\Users\\\\franc\\\\OneDrive\\\\Ambiente de Trabalho\\\\Universidade\\\\MTAD\\\\TP_MTAD\\\\bankag\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "setupParse source_frames: [ \"nfs:\\\\C:\\\\Users\\\\franc\\\\OneDrive\\\\Ambiente de Trabalho\\\\Universidade\\\\MTAD\\\\TP_MTAD\\\\bankag\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "parseFiles\n  source_frames: [\"nfs:\\\\C:\\\\Users\\\\franc\\\\OneDrive\\\\Ambiente de Trabalho\\\\Universidade\\\\MTAD\\\\TP_MTAD\\\\bankag\"]\n  destination_frame: \"bankag.hex\"\n  parse_type: \"CSV\"\n  separator: 44\n  number_columns: 20\n  single_quotes: false\n  column_names: [\"Attrition_Flag\",\"Customer_Age\",\"Gender\",\"Dependent_count\",\"Education_Level\",\"Marital_Status\",\"Income_Category\",\"Card_Category\",\"Months_on_book\",\"Total_Relationship_Count\",\"Months_Inactive_12_mon\",\"Contacts_Count_12_mon\",\"Credit_Limit\",\"Total_Revolving_Bal\",\"Avg_Open_To_Buy\",\"Total_Amt_Chng_Q4_Q1\",\"Total_Trans_Amt\",\"Total_Trans_Ct\",\"Total_Ct_Chng_Q4_Q1\",\"Avg_Utilization_Ratio\"]\n  column_types: [\"Enum\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Enum\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\"]\n  delete_on_done: true\n  check_header: 1\n  chunk_size: 26912\n  escapechar: undefined"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"bankag.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "assist splitFrame, \"bankag.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel \"deeplearning\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'deeplearning', {\"model_id\":\"dp_200_100_10e\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"activation\":\"Rectifier\",\"hidden\":[200,100],\"epochs\":10,\"variable_importances\":true,\"fold_assignment\":\"AUTO\",\"score_each_iteration\":true,\"balance_classes\":true,\"use_all_factor_levels\":true,\"standardize\":true,\"train_samples_per_iteration\":-2,\"adaptive_rate\":true,\"input_dropout_ratio\":0,\"l1\":0,\"l2\":0,\"loss\":\"Automatic\",\"distribution\":\"AUTO\",\"huber_alpha\":0.9,\"score_interval\":5,\"score_training_samples\":10000,\"score_validation_samples\":0,\"score_duty_cycle\":0.1,\"stopping_rounds\":5,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0,\"max_runtime_secs\":0,\"autoencoder\":false,\"categorical_encoding\":\"AUTO\",\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"target_ratio_comm_to_comp\":0.05,\"seed\":-1,\"rho\":0.99,\"epsilon\":1e-8,\"nesterov_accelerated_gradient\":true,\"max_w2\":3.4028235e+38,\"initial_weight_distribution\":\"UniformAdaptive\",\"classification_stop\":0,\"score_validation_sampling\":\"Uniform\",\"diagnostics\":true,\"fast_mode\":true,\"force_load_balance\":true,\"single_node_mode\":false,\"shuffle_training_data\":false,\"missing_values_handling\":\"MeanImputation\",\"quiet_mode\":false,\"sparse\":false,\"col_major\":false,\"average_activation\":0,\"sparsity_beta\":0,\"max_categorical_features\":2147483647,\"reproducible\":false,\"export_weights_and_biases\":false,\"mini_batch_size\":1,\"elastic_averaging\":false}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"dp_200_100_10e\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'deeplearning', {\"model_id\":\"dp_100_50_10e\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"activation\":\"Rectifier\",\"hidden\":[100,50],\"epochs\":10,\"variable_importances\":true,\"fold_assignment\":\"AUTO\",\"score_each_iteration\":true,\"balance_classes\":true,\"use_all_factor_levels\":true,\"standardize\":true,\"train_samples_per_iteration\":-2,\"adaptive_rate\":true,\"input_dropout_ratio\":0,\"l1\":0,\"l2\":0,\"loss\":\"Automatic\",\"distribution\":\"AUTO\",\"huber_alpha\":0.9,\"score_interval\":5,\"score_training_samples\":10000,\"score_validation_samples\":0,\"score_duty_cycle\":0.1,\"stopping_rounds\":5,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0,\"max_runtime_secs\":0,\"autoencoder\":false,\"categorical_encoding\":\"AUTO\",\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"target_ratio_comm_to_comp\":0.05,\"seed\":-1,\"rho\":0.99,\"epsilon\":1e-8,\"nesterov_accelerated_gradient\":true,\"max_w2\":3.4028235e+38,\"initial_weight_distribution\":\"UniformAdaptive\",\"classification_stop\":0,\"score_validation_sampling\":\"Uniform\",\"diagnostics\":true,\"fast_mode\":true,\"force_load_balance\":true,\"single_node_mode\":false,\"shuffle_training_data\":false,\"missing_values_handling\":\"MeanImputation\",\"quiet_mode\":false,\"sparse\":false,\"col_major\":false,\"average_activation\":0,\"sparsity_beta\":0,\"max_categorical_features\":2147483647,\"reproducible\":false,\"export_weights_and_biases\":false,\"mini_batch_size\":1,\"elastic_averaging\":false}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"dp_100_50_10e\""
+    },
+    {
+      "type": "cs",
+      "input": "exportModel \"dp_100_50_10e\""
+    },
+    {
+      "type": "cs",
+      "input": "exportModel \"dp_100_50_10e\", \"C:\\\\Users\\\\franc\\\\OneDrive\\\\Ambiente de Trabalho\\\\Universidade\\\\MTAD\\\\TP_MTAD\\\\Modelos\\\\dp_100_50_10e\", overwrite: false, format: \"bin\""
+    }
+  ]
+}

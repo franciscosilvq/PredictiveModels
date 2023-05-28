@@ -1,0 +1,93 @@
+---
+title: "Relatório AED"
+output: html_document
+---
+
+```{r setup, include= FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(corrplot)
+bankag <- read.csv("C:../../MTAD_Francisco_Ferreira/datasets//bankag")
+bankmarkdown <- read_csv("C:../../MTAD_Francisco_Ferreira/datasets/\\Bank_markdown")
+
+#include ( executar ou não)
+#echo ( aparecer código no relatório)
+```
+
+### Introdução
+
+Tendo por base a o trabalho prático executado em R e H2o este relatório tem como objetivo a Análise Exploratória dos Dados. Esta análise pretende fornecer elementos e conhecimento que permitam à equipa obter dados relevantes sobre a organização mas principalmente acerca do contexto onde se insere e a dinâmica de negócio. Este conhecimento permite abordar os dados com mais 
+
+### Descrição do Problema Abordado
+
+De uma forma muito sucinta o dataset de estudo para este relatório representa a base de dados de clientes de um banco. Ainda que este contexto dê azo a inúmeros problemas que poderiam ser resolvidos com Machine Learning, foi definido que o problema a abordar seria estimar se um novo cliente iria ou não cumprir com o pagamento do crédito atribuído.
+
+### Análise Gráfica
+
+#### Matriz de Correlação
+
+A matriz que se segue representa a correlação entre as variáveis no objeto de estudo. Tendo em conta a problemática abordada no parágrafo acima, através desta matriz podemos aferir quais as variáveis mais correlacionadas entre si e com a variável dependente (Attrition_Flag), a correlação é alta quando o seu valor se aproxima de 1 ou -1 uma vez que correlação pode ser direta ou indireta.
+
+
+```{r matriz de correlação, include = TRUE}
+#Matriz de correlação
+corr <- cor(bankmarkdown[,1:ncol(bankmarkdown)])
+
+corrplot(corr,
+         method="color", order="hclust", addCoef.col = "black", tl.col="black", tl.srt=45, tl.cex=0.7, number.cex=0.5, number.digits=2)
+```
+
+
+Com base no gráfico acima referido podemos analisar a correlação das variáveis entre si (1) e com a variável dependente (2):
+
+1 - A análise da correlação das variáveis entre si permite-nos retirar algumas conclusões acerca da amostra recolhida, por exemplo, a alta correlação negativa da variável “Avg_Utilization_Ratio” com a variável “Credit Limit” podemos perceber que os clientes que usam mais vezes o cartão à partida terão menos saldo que os clientes que utilizam pouco. Outra de muitas conclusões a retirar é olhando para a alta correlação entre “Credit_Limit” com a variável “Income_Category” ou seja, quanto maior o rendimento obtido pelo cliente maior será o crédito atribuído.
+Por fim, a correlação que, a meu ver, assume mais importância é a variável “Gender” com a variável “Income_Category”. Para perceber, é necessário contextualizar que no atributo “Gender” só existem resultados 0 = Homem e 1 = Mulher, posto isto podemos interpretar que quando o género é feminino o Rendimento baixa.
+
+2 - Podemos também fazer uma observação apenas da correlação com a variável dependente e, com base na matriz de correlação, podemos aferir que a variável que mais se relaciona diretamente com a variável dependente é “total_Trans_Ct”.
+
+
+#### Relação entre os meses de permanência e o crédito obtido tendo em conta o género"
+
+Tendo em conta a análise anterior, achei por bem analisar a relação entre o crédito atribuído a homens e mulheres, para isso achei que o eixo do x fosse atribuído à variável "Months_On_Book" uma vez que esta também nos proporciona uma análise temporal.
+
+
+```{r meses de permanência face ao limite de credito, echo=FALSE}
+
+#Relação entre o limite de crédito com os meses de permanencia no banco bem como o genero
+# 0 = Homem, 1 = Mulher 
+ggplot(bankmarkdown, aes(x=bankmarkdown$Months_on_book, y=bankmarkdown$Credit_Limit, colour=factor(bankmarkdown$Gender))) +
+  geom_point()+ 
+  labs(title = "Relação entre os meses de permanência e o crédito obtido, face ao género", 
+       x="Meses de Permanência no banco", 
+       y="Limite de Crédito",
+       colour= "Género",
+       caption= "0 = Homem
+       1 = Mulher") 
+```
+
+Tendo como base o gráfico acima, podemos concluir que existem muitas mais amostras femininas em valores de Limite de Crédito baixo e o contrário em valores mais altos. É seguro dizer que tendo em conta a amostra recolhida os Homens têm mais possibilidade de obter crédito. Posto, isto é, importante perceber que talvez este conjunto de dados possa não ser o ideal uma vez que poderá dar azo a criar um modelo de Machine Learning em que provavelmente haverá disparidade na questão do género, a meu ver deveriam ser recolhidos mais dados para que fosse possível balancear os dados.
+
+
+
+Por fim acho necessário ter uma visão do estado de cliente do conjunto de dados recolhido, a meu ver a melhor forma de o fazer é perceber a quantidade de clientes AC (Attrited Customer) e EC (Existing Customer) face às categorias de rendimento existentes.
+Ainda que este gráfico nos dê uma boa visão da distribuição dos clientes que entraram em incumprimento face à categoria de rendimento, podemos também aferir que a distribuição é muito idêntica em todas as categorias podemos por isso assumir que a categoria de rendimento não terá um peso elevado na previsão do estado de cliente.
+
+#### Distribuição do estado de cliente face à sua categoria de rendimento
+
+```{r AC E EC face ao Income, echo=FALSE}
+#Cliente Status vs Income Category
+counts <- table(bankag$Attrition_Flag,bankag$Income_Category)
+barplot(counts,names.arg = c("Unknown","Less than $40K","$40K - $60K","$60K - $80K","$80K - $120K","$120K +"),cex.names = 0.7,
+        main="Situação de cliente face ao Rendimento",
+        xlab="Classes de Rendimento", 
+        col=c("red","blue"),
+        ylim = c(0,3000),
+        legend =rownames(counts),
+        beside=TRUE)
+```
+
+#### Conclusões finais 
+
+Com base nesta análise identifico que o principal problema é o balanceamento dos dados, uma vez que cerca de 80% dos dados é de clientes EC e apenas 20% de AC, considerando aquilo que penso ser um conjunto de dados com défices no que ao género diz respeito penso que para que seja possível ter melhores resultados num possível modelo de previsão seriam necessários mais dados e mais balanceados.

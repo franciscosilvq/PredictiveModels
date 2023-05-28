@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "buildModel"
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'drf', {\"model_id\":\"drf_25_10_0,4_bc\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"ntrees\":25,\"max_depth\":10,\"min_rows\":1,\"nbins\":20,\"seed\":-1,\"mtries\":-1,\"sample_rate\":0.4,\"score_each_iteration\":true,\"score_tree_interval\":0,\"fold_assignment\":\"AUTO\",\"balance_classes\":true,\"nbins_top_level\":1024,\"nbins_cats\":1024,\"r2_stopping\":1.7976931348623157e+308,\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":0,\"col_sample_rate_per_tree\":1,\"min_split_improvement\":0.00001,\"histogram_type\":\"AUTO\",\"categorical_encoding\":\"AUTO\",\"distribution\":\"AUTO\",\"gainslift_bins\":-1,\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"build_tree_one_node\":false,\"sample_rate_per_class\":[],\"binomial_double_trees\":false,\"col_sample_rate_change_per_level\":1,\"calibrate_model\":false,\"calibration_method\":\"AUTO\",\"check_constant_response\":true}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"drf_25_10_0,4_bc\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'drf', {\"model_id\":\"drf_50_20_0,6\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"ntrees\":50,\"max_depth\":20,\"min_rows\":1,\"nbins\":20,\"seed\":-1,\"mtries\":-1,\"sample_rate\":0.6,\"score_each_iteration\":true,\"score_tree_interval\":0,\"fold_assignment\":\"AUTO\",\"balance_classes\":false,\"nbins_top_level\":1024,\"nbins_cats\":1024,\"r2_stopping\":1.7976931348623157e+308,\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":0,\"col_sample_rate_per_tree\":1,\"min_split_improvement\":0.00001,\"histogram_type\":\"AUTO\",\"categorical_encoding\":\"AUTO\",\"distribution\":\"AUTO\",\"gainslift_bins\":-1,\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"build_tree_one_node\":false,\"sample_rate_per_class\":[],\"binomial_double_trees\":false,\"col_sample_rate_change_per_level\":1,\"calibrate_model\":false,\"calibration_method\":\"AUTO\",\"check_constant_response\":true}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"drf_50_20_0,6\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'drf', {\"model_id\":\"drf_50_20_0,6_bc\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"ntrees\":50,\"max_depth\":20,\"min_rows\":1,\"nbins\":20,\"seed\":-1,\"mtries\":-1,\"sample_rate\":0.6,\"score_each_iteration\":true,\"score_tree_interval\":0,\"fold_assignment\":\"AUTO\",\"balance_classes\":true,\"nbins_top_level\":1024,\"nbins_cats\":1024,\"r2_stopping\":1.7976931348623157e+308,\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":0,\"col_sample_rate_per_tree\":1,\"min_split_improvement\":0.00001,\"histogram_type\":\"AUTO\",\"categorical_encoding\":\"AUTO\",\"distribution\":\"AUTO\",\"gainslift_bins\":-1,\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"build_tree_one_node\":false,\"sample_rate_per_class\":[],\"binomial_double_trees\":false,\"col_sample_rate_change_per_level\":1,\"calibrate_model\":false,\"calibration_method\":\"AUTO\",\"check_constant_response\":true}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"drf_50_20_0,6_bc\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'drf', {\"model_id\":\"drf_50_20_0,4_bc\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"ntrees\":50,\"max_depth\":20,\"min_rows\":1,\"nbins\":20,\"seed\":-1,\"mtries\":-1,\"sample_rate\":0.4,\"score_each_iteration\":true,\"score_tree_interval\":0,\"fold_assignment\":\"AUTO\",\"balance_classes\":true,\"nbins_top_level\":1024,\"nbins_cats\":1024,\"r2_stopping\":1.7976931348623157e+308,\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":0,\"col_sample_rate_per_tree\":1,\"min_split_improvement\":0.00001,\"histogram_type\":\"AUTO\",\"categorical_encoding\":\"AUTO\",\"distribution\":\"AUTO\",\"gainslift_bins\":-1,\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"build_tree_one_node\":false,\"sample_rate_per_class\":[],\"binomial_double_trees\":false,\"col_sample_rate_change_per_level\":1,\"calibrate_model\":false,\"calibration_method\":\"AUTO\",\"check_constant_response\":true}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"drf_50_20_0,4_bc\""
+    },
+    {
+      "type": "cs",
+      "input": "buildModel 'drf', {\"model_id\":\"drf_50_20_0,3_bc\",\"training_frame\":\"bankag.train\",\"validation_frame\":\"bankag.validation\",\"nfolds\":5,\"response_column\":\"Attrition_Flag\",\"ignored_columns\":[],\"ignore_const_cols\":true,\"ntrees\":50,\"max_depth\":20,\"min_rows\":1,\"nbins\":20,\"seed\":-1,\"mtries\":-1,\"sample_rate\":0.3,\"score_each_iteration\":true,\"score_tree_interval\":0,\"fold_assignment\":\"AUTO\",\"balance_classes\":true,\"nbins_top_level\":1024,\"nbins_cats\":1024,\"r2_stopping\":1.7976931348623157e+308,\"stopping_rounds\":0,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":0.001,\"max_runtime_secs\":0,\"col_sample_rate_per_tree\":1,\"min_split_improvement\":0.00001,\"histogram_type\":\"AUTO\",\"categorical_encoding\":\"AUTO\",\"distribution\":\"AUTO\",\"gainslift_bins\":-1,\"auc_type\":\"AUTO\",\"keep_cross_validation_models\":true,\"keep_cross_validation_predictions\":false,\"keep_cross_validation_fold_assignment\":false,\"class_sampling_factors\":[],\"max_after_balance_size\":5,\"build_tree_one_node\":false,\"sample_rate_per_class\":[],\"binomial_double_trees\":false,\"col_sample_rate_change_per_level\":1,\"calibrate_model\":false,\"calibration_method\":\"AUTO\",\"check_constant_response\":true}"
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"drf_50_20_0,3_bc\""
+    },
+    {
+      "type": "cs",
+      "input": "predict model: \"drf_50_20_0,3_bc\""
+    },
+    {
+      "type": "cs",
+      "input": "predict model: \"drf_50_20_0,3_bc\", frame: \"bankag.test\", predictions_frame: \"prediction_drf_50_20_0,3_bc\""
+    }
+  ]
+}
